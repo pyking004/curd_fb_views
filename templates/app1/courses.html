@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block b1 %}
+    {% for course in courses %}
+        <a href="{% url 'app1:updatecourse' course.id %}">
+            <h2>{{course.cname}}</h2>
+        </a>
+        <form action="{% url 'app1:deletecourse' course.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+        </form>
+    {% endfor %}
+{% endblock b1 %}
